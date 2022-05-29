@@ -31,10 +31,13 @@ function getRandomColor() {
 function generateColors(){
     const allColors = document.querySelectorAll('.color')
     allColors[0].style.backgroundColor = 'black'
-    allColors[1].style.backgroundColor = getRandomColor();
-    allColors[2].style.backgroundColor = getRandomColor();
-    allColors[3].style.backgroundColor = getRandomColor();
-    allColors[4].style.backgroundColor = getRandomColor();
+    for(let i = 1; i < allColors.length; i++){
+        let color = getRandomColor()
+        while(color === allColors[i-1].style.backgroundColor){
+            color = getRandomColor()
+        }
+        allColors[i].style.backgroundColor = color
+    }
 }
 
 function generateEvents(){
@@ -42,7 +45,9 @@ function generateEvents(){
     let colorPallet = document.querySelector('#pixel-board')
     let clearBtn = document.querySelector('#clear-board')
 
-    colors.forEach(color => {color.addEventListener('click', changeColor)})
+    colors.forEach(color => {
+        color.addEventListener('click', changeColor)
+    })
     colorPallet.addEventListener('click', paintPixel)
     clearBtn.addEventListener('click', clearBoard)
 }

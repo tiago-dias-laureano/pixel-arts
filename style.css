@@ -55,15 +55,16 @@ main{
 }
 
 #color-palette{
-    display: flex;
+    display: grid;
     gap: 5px;
+    grid-template-columns: repeat(5, 1fr);
     margin: 10px 0;
 }
 
 #pixel-board{
     margin-top: 10px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
     gap: 5px;
 }
 
